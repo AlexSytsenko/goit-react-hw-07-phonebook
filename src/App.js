@@ -1,48 +1,67 @@
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import Loader from 'react-loader-spinner';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import { Route, Switch } from 'react-router-dom';
 
-import Form from './components/Form';
-import ContactsList from './components/ContactsList';
-import FilterContacts from './components/FilterContacts';
-import * as selectors from './redux/contacts/selectors';
+import routes from './routes';
+
+// import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
+// import Loader from 'react-loader-spinner';
+// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+
+// import Form from './components/Form';
+// import ContactsList from './components/ContactsList';
+// import FilterContacts from './components/FilterContacts';
+// import * as selectors from './redux/contacts/selectors';
 import './styles/container.scss';
+import AppBar from './components/AppBar';
+import ContactsView from './views/ContactsView';
+import HomeView from './views/HomeView';
+import LoginView from './views/LoginView';
+import RegisterView from './views/RegisterView';
 
-const App = ({ loading, error }) => (
-  <div className="container">
-    <h2 className="title title__main">Phonebook</h2>
-    <Form />
-    {loading && <Loader type="Circles" color="#fff" height={75} width={75} />}
-    {error && <h3 className="error">{error}</h3>}
-    <h2 className="title">Contacts</h2>
-    <FilterContacts />
-    <ContactsList />
-  </div>
+const App = () => (
+  <>
+    <AppBar />
+    <div className="container">
+      <Switch>
+        <Route exact path={routes.home} component={HomeView} />
+        <Route path={routes.register} component={RegisterView} />
+        <Route path={routes.login} component={LoginView} />
+        <Route path={routes.contacts} component={ContactsView} />
+      </Switch>
+    </div>
+  </>
 );
 
-App.defaultProps = {
-  loading: false,
-  error: '',
-};
+export default App;
 
-Form.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.string,
-};
+// const App = ({ loading, error }) => (
+//   <div className="container">
+//     <h2 className="title title__main">Phonebook</h2>
+//     <Form />
+//     {loading && <Loader type="Circles" color="#fff" height={75} width={75} />}
+//     {error && <h3 className="error">{error}</h3>}
+//     <h2 className="title">Contacts</h2>
+//     <FilterContacts />
+//     <ContactsList />
+//   </div>
+// );
 
-const mapStateToProps = state => ({
-  loading: selectors.getLoading(state),
-  error: selectors.getError(state),
-});
+// App.defaultProps = {
+//   loading: false,
+//   error: '',
+// };
 
-export default connect(mapStateToProps)(App);
+// Form.propTypes = {
+//   loading: PropTypes.bool,
+//   error: PropTypes.string,
+// };
 
+// const mapStateToProps = state => ({
+//   loading: selectors.getLoading(state),
+//   error: selectors.getError(state),
+// });
 
-
-
-
-
+// export default connect(mapStateToProps)(App);
 
 //before Redax
 
