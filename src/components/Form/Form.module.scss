@@ -1,0 +1,35 @@
+@import 'styles/shared';
+
+.form {
+  display: inline-flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid $form-button-color;
+  border-radius: 20px;
+}
+
+.label {
+  @extend %label;
+}
+
+.input {
+  @extend %input;
+  border-color: $form-button-color;
+}
+
+.button {
+  @extend %button;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  color: inherit;
+  background-color: $form-button-color;
+  transition: $timing-function;
+
+  &:hover {
+    background-color: $form-button-accent;
+  }
+}

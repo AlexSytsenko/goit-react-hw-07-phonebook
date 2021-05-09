@@ -1,0 +1,10 @@
+@import 'styles/shared';
+
+.label {
+  @extend %label;
+  margin-bottom: 20px;
+}
+
+.input {
+  @extend %input;
+}

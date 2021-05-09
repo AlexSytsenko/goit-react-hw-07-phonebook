@@ -1,0 +1,45 @@
+@import 'styles/shared';
+
+.contact__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  white-space: pre-wrap;
+  margin: 0 auto;
+  padding: 10px 20px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 30px;
+
+  &:nth-child(4n + 1) {
+    background-color: $first-contact-color;
+  }
+  &:nth-child(4n + 2) {
+    background-color: $second-contact-color;
+  }
+
+  &:nth-child(4n + 3) {
+    background-color: $third-contact-color;
+  }
+  &:nth-child(4n + 4) {
+    background-color: $fourth-contact-color;
+  }
+}
+
+.contact__text {
+  font-size: 20px;
+}
+
+.contact__button {
+  @extend %button;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  color: inherit;
+  background-color: $contaact-button-color;
+  transition: $timing-function;
+
+  &:hover {
+    background-color: $contaact-button-accent;
+  }
+}
