@@ -5,15 +5,20 @@ import styles from './Navigation.module.scss';
 
 const Navigation = () => (
   <nav>
-    <NavLink to={routes.home} exact style={styles.link} activeStyle={styles.activeLink}>
+    <NavLink
+      to={routes.home}
+      exact
+      className={styles.link}
+      activeClassName={styles.activeLink}
+    >
       Home
     </NavLink>
 
     <NavLink
       to={routes.contacts}
       exact
-      style={styles.link}
-      activeStyle={styles.activeLink}
+      className={styles.link}
+      activeClassName={styles.activeLink}
     >
       Contacts
     </NavLink>

@@ -12,7 +12,7 @@ import {
   clearContactsError,
 } from './actions';
 
-axios.defaults.baseURL = 'http://localhost:4040';
+// axios.defaults.baseURL = 'http://localhost:4040';
 
 export const fetchContacts = () => dispatch => {
   dispatch(fetchContactsRequest());

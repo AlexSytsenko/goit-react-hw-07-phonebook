@@ -8,16 +8,16 @@ const AuthNav = () => (
     <NavLink
       to={routes.register}
       exact
-      style={styles.link}
-      activeStyle={styles.activeLink}
+      className={styles.link}
+      activeClassName={styles.activeLink}
     >
       Registration
     </NavLink>
     <NavLink
       to={routes.login}
       exact
-      style={styles.link}
-      activeStyle={styles.activeLink}
+      className={styles.link}
+      activeClassName={styles.activeLink}
     >
       Login
     </NavLink>
