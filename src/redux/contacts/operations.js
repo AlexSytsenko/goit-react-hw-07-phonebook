@@ -12,8 +12,6 @@ import {
   clearContactsError,
 } from './actions';
 
-// axios.defaults.baseURL = 'http://localhost:4040';
-
 export const fetchContacts = () => async dispatch => {
   dispatch(fetchContactsRequest());
 
@@ -25,10 +23,6 @@ export const fetchContacts = () => async dispatch => {
   } catch (error) {
     dispatch(fetchContactsError(error.message));
   }
-  // axios
-  //   .get('/contacts')
-  //   .then(({ data }) => dispatch(fetchContactsSuccess(data)))
-  //   .catch(error => dispatch(fetchContactsError(error)));
 };
 
 
@@ -44,27 +38,6 @@ export const addContact = contact => async dispatch => {
     dispatch(addContactError(error.message));
   }
 
-  // const { name } = contact;
-  // const massege = { message: `${name} is already in contacts` };
-
-  // dispatch(clearContactsError());
-
-  // dispatch(addContactRequest());
-
-  // axios
-  //   .get(`/contacts?q=${name}`)
-  //   .then(({ data }) => {
-  //     if (data.length > 0) {
-  //       dispatch(addContactError(massege));
-  //       return;
-  //     }
-  //     axios
-  //   .post('/contacts', contact)
-  //   .then(({ data }) => dispatch(addContactSuccess(data)))
-  //   .catch(error => dispatch(addContactError(error)));
-    
-  //   })
-  //   .catch(error => dispatch(fetchContactsError(error)));
 };
 
 
@@ -78,12 +51,4 @@ export const deleteContact = contactId => async dispatch => {
   } catch (error) {
     dispatch(deleteContactError(error.message));
   }
-
-  // dispatch(clearContactsError());
-  // dispatch(deleteContactRequest());
-
-  // axios
-  //   .delete(`/contacts/${contactId}`)
-  //   .then(() => dispatch(deleteContactSuccess(contactId)))
-  //   .catch(error => dispatch(deleteContactError(error)));
 };

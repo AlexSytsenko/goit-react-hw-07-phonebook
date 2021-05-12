@@ -1,6 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
-
+import { Component } from 'react';
 import routes from './routes';
+import { connect } from 'react-redux';
 
 // import PropTypes from 'prop-types';
 // import { connect } from 'react-redux';
@@ -17,9 +18,18 @@ import ContactsView from './views/ContactsView';
 import HomeView from './views/HomeView';
 import LoginView from './views/LoginView';
 import RegisterView from './views/RegisterView';
+import authOperations from './redux/auth/auth-operations';
 
-const App = () => (
-  <>
+
+
+class App extends Component {
+  componentDidMount() {
+    this.props.onGetCurrentUser();
+  };
+
+  render() {
+    return (
+       <>
     <AppBar />
     <div className="container">
       <Switch>
@@ -30,9 +40,27 @@ const App = () => (
       </Switch>
     </div>
   </>
-);
+    )
+  }
+};
 
-export default App;
+const mapDispatchToProps = {
+  onGetCurrentUser: authOperations.getCurrentUser,
+};
+
+export default connect(null, mapDispatchToProps)(App);
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const App = ({ loading, error }) => (
 //   <div className="container">

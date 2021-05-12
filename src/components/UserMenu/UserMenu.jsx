@@ -9,7 +9,6 @@ import styles from './UserMenu.module.scss';
 
 
 const UserMenu = ({ avatar, name, onLogout }) => {
-  console.log(name);
   return (
     <div className={styles.container}>
       <img src={avatar} alt="" width="32" className={styles.avatar} />
