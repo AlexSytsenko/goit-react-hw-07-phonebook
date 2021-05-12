@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { Component } from 'react';
 import routes from './routes';
 import { connect } from 'react-redux';
@@ -20,6 +20,10 @@ import LoginView from './views/LoginView';
 import RegisterView from './views/RegisterView';
 import authOperations from './redux/auth/auth-operations';
 
+import PrivateRoute from './components/PrivateRoute';
+import PublicRouter from './components/PublicRouter';
+
+
 
 
 class App extends Component {
@@ -29,18 +33,32 @@ class App extends Component {
 
   render() {
     return (
-       <>
-    <AppBar />
-    <div className="container">
-      <Switch>
-        <Route exact path={routes.home} component={HomeView} />
-        <Route path={routes.register} component={RegisterView} />
-        <Route path={routes.login} component={LoginView} />
-        <Route path={routes.contacts} component={ContactsView} />
-      </Switch>
-    </div>
-  </>
-    )
+      <>
+        <AppBar />
+        <div className="container">
+          <Switch>
+            <PublicRouter exact path={routes.home} component={HomeView} />
+            <PublicRouter
+              path={routes.register}
+              restricted
+              redirectTo={routes.contacts}
+              component={RegisterView}
+            />
+            <PublicRouter
+              path={routes.login}
+              restricted
+              redirectTo={routes.contacts}
+              component={LoginView}
+            />
+            <PrivateRoute
+              path={routes.contacts}
+              component={ContactsView}
+              redirectTo={routes.login}
+            />
+          </Switch>
+        </div>
+      </>
+    );
   }
 };
 

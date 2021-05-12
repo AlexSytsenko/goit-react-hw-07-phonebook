@@ -1,5 +1,5 @@
-const getAuthenticated = state => !!state.auth.token;
+const getIsAuthenticated = state => state.auth.isAuthenticated;
 
 const getUserName = (state) => state.auth.user.name;
 
-export default { getAuthenticated, getUserName };
+export default { getIsAuthenticated, getUserName };
