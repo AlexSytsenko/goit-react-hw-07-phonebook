@@ -2,12 +2,15 @@ import { Switch } from 'react-router-dom';
 import { Component, Suspense, lazy } from 'react';
 import routes from './routes';
 import { connect } from 'react-redux';
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 import './styles/container.scss';
 import AppBar from './components/AppBar';
 import authOperations from './redux/auth/auth-operations';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRouter from './components/PublicRouter';
+import selectors from './redux/auth/auth-selectors';
 
 const HomeView = lazy(() =>
   import('./views/HomeView' /* webpackChunkName: "Home-page" */),
@@ -28,11 +31,20 @@ class App extends Component {
   }
 
   render() {
+    const { isLoading } = this.props;
     return (
       <>
         <AppBar />
+
         <div className="container">
-          <Suspense fallback={<p>Загружаем...</p>}>
+          {isLoading && (
+            <Loader type="Puff" color="#C48613" height={75} width={75} />
+          )}
+          <Suspense
+            fallback={
+              <Loader type="Puff" color="#C48613" height={75} width={75} />
+            }
+          >
             <Switch>
               <PublicRouter exact path={routes.home} component={HomeView} />
               <PublicRouter
@@ -48,7 +60,7 @@ class App extends Component {
                 component={LoginView}
               />
               <PrivateRoute
-                path={routes.contacts}
+                path={routes.home}
                 component={ContactsView}
                 redirectTo={routes.login}
               />
@@ -60,8 +72,12 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isLoading: selectors.getIsLoading(state),
+})
+
 const mapDispatchToProps = {
   onGetCurrentUser: authOperations.getCurrentUser,
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

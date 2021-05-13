@@ -21,6 +21,14 @@ export const getVisibleContacts = createSelector(
   },
 );
 
+export default {
+  getLoading,
+  getError,
+  getFilter,
+  getAllContacts,
+  getVisibleContacts,
+};
+
 
 
 
