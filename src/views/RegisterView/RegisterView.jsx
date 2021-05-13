@@ -28,7 +28,7 @@ class RegisterView extends Component {
 
     return (
       <div>
-        <h1 className={styles.title}>Страница регистрации</h1>
+        <h1 className={styles.title}>Registration page</h1>
 
         <form
           onSubmit={this.handleSubmit}
@@ -36,7 +36,7 @@ class RegisterView extends Component {
           autoComplete="off"
         >
           <label className={styles.label}>
-            Имя
+            Name
             <input
               className={styles.input}
               type="text"
@@ -47,7 +47,7 @@ class RegisterView extends Component {
           </label>
 
           <label className={styles.label}>
-            Почта
+            Email
             <input
               className={styles.input}
               type="email"
@@ -58,7 +58,7 @@ class RegisterView extends Component {
           </label>
 
           <label className={styles.label}>
-            Пароль
+            Password
             <input
               className={styles.input}
               type="password"
@@ -69,7 +69,7 @@ class RegisterView extends Component {
           </label>
 
           <button type="submit" className={styles.button}>
-            Зарегистрироваться
+            Register new user
           </button>
         </form>
       </div>

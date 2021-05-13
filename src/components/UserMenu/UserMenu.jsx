@@ -11,8 +11,8 @@ import styles from './UserMenu.module.scss';
 const UserMenu = ({ avatar, name, onLogout }) => {
   return (
     <div className={styles.container}>
-      <img src={avatar} alt="" width="32" className={styles.avatar} />
-      <span className={styles.name}>{name}</span>
+      <img src={avatar} alt="user avatar" width="32" className={styles.avatar} />
+      <span className={styles.name}>Welcome, {name}</span>
       <button type="button" onClick={onLogout}>
         Logout
     </button>

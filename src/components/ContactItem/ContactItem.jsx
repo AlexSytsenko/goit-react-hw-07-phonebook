@@ -31,7 +31,7 @@ ContactsItem.defaultProps = {
 
 ContactsItem.propTypes = {
   contacts: PropTypes.array,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
   onDeleteContact: PropTypes.func.isRequired,
 };
 

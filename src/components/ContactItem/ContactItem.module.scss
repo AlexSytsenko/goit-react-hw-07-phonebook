@@ -32,12 +32,8 @@
 
 .contact__button {
   @extend %button;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 16px;
-  color: inherit;
+  margin: 0;
   background-color: $contaact-button-color;
-  transition: $timing-function;
 
   &:hover {
     background-color: $contaact-button-accent;
