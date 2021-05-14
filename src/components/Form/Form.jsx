@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import { addContact } from '../../redux/contacts/operations';
+import selectors from '../../redux/contacts/selectors';
 import styles from './Form.module.scss';
 
 class Form extends Component {
@@ -22,14 +24,26 @@ class Form extends Component {
 
     const { name, number } = this.state;
 
-    const contact = {
+    if (this.isUniqueContact()) {
+      const message = `${name} is already in contacts.`;
+
+      return toast.warning(message);
+    }
+
+    const newContact = {
       name,
       number,
     };
 
-    this.props.onSubmit(contact);
+    this.props.onSubmit(newContact);
     this.reset();
   };
+
+  isUniqueContact() {
+    const { name } = this.state;
+    const { contacts } = this.props;
+    return contacts.find(contact => contact.name === name);
+  }
 
   reset = () => {
     this.setState({ name: '', number: '' });
@@ -76,11 +90,15 @@ class Form extends Component {
 
 Form.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  contacts: PropTypes.array.isRequired,
 };
 
+const mapStateToProps = state => ({
+  contacts: selectors.getAllContacts(state),
+});
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: value => dispatch(addContact(value)),
 });
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
