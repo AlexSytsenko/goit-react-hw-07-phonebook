@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 
 import * as selectors from '../../redux/contacts/selectors';
 import * as operations from '../../redux/contacts/operations';
@@ -19,7 +21,7 @@ const ContactsItem = ({ contacts, value, onDeleteContact }) => {
         type="button"
         onClick={() => onDeleteContact(value)}
       >
-        Delete
+        <DeleteIcon />
       </button>
     </li>
   );
