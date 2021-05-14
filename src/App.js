@@ -4,6 +4,8 @@ import routes from './routes';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './styles/container.scss';
 import AppBar from './components/AppBar';
@@ -35,7 +37,7 @@ class App extends Component {
     return (
       <>
         <AppBar />
-
+        <ToastContainer />
         <div className="container">
           {isLoading && (
             <Loader type="Puff" color="#C48613" height={75} width={75} />
@@ -74,7 +76,7 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   isLoading: selectors.getIsLoading(state),
-})
+});
 
 const mapDispatchToProps = {
   onGetCurrentUser: authOperations.getCurrentUser,

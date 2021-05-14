@@ -1,5 +1,6 @@
 import axios from 'axios';
 import authActions from './auth-actions';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -21,6 +22,7 @@ const register = credentials => async dispatch => {
     token.set(response.data.token);
     dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
+    toast.error(error.message);
     dispatch(authActions.registerError(error.message));
   }
 };
@@ -34,11 +36,10 @@ const logIn = credentials => async dispatch => {
     token.set(response.data.token);
     dispatch(authActions.loginSuccess(response.data));
   } catch (error) {
+    toast.error(error.message);
     dispatch(authActions.loginError(error.message));
   }
 };
-
-//Post /users/logout
 
 const logout = () => async dispatch => {
   dispatch(authActions.logoutRequest());
@@ -49,11 +50,10 @@ const logout = () => async dispatch => {
     token.unset();
     dispatch(authActions.logoutSuccess());
   } catch (error) {
+    toast.error(error.message);
     dispatch(authActions.logoutError(error.message));
   }
 };
-
-//Get /users/current
 
 const getCurrentUser = () => async (dispatch, getState) => {
   const {
@@ -73,6 +73,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
 
     dispatch(authActions.getCurrentUserSuccess(response.data));
   } catch (error) {
+    toast.error(error.message);
     dispatch(authActions.getCurrentUserError(error.message));
   }
 

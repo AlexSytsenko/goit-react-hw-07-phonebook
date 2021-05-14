@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -7,16 +7,23 @@ import * as operations from '../../redux/contacts/operations';
 import * as selectors from '../../redux/contacts/selectors';
 import styles from './ContactsList.module.scss';
 
-const ContactsList = ({ contacts, fetchContacts }) => {
-  useEffect(() => fetchContacts, []);
-  return (
-    <ul className={styles.contacts__list}>
-      {contacts.map(({ id }) => (
-        <ContactsItem key={id} value={id} />
-      ))}
-    </ul>
-  );
-};
+class ContactsList extends Component {
+  componentDidMount() {
+    this.props.fetchContacts();
+  }
+
+  render() {
+    const { contacts } = this.props;
+
+    return (
+      <ul className={styles.contacts__list}>
+       {contacts.map(({ id }) => (
+         <ContactsItem key={id} value={id} />
+       ))}
+     </ul>
+    )
+  }
+}
 
 ContactsList.propTypes = {
   contacts: PropTypes.array.isRequired,
@@ -28,7 +35,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchContacts: dispatch(operations.fetchContacts()),
+  fetchContacts: () => dispatch(operations.fetchContacts()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactsList);
@@ -36,15 +43,49 @@ export default connect(mapStateToProps, mapDispatchToProps)(ContactsList);
 
 
 
+//Hooks
 
+// import { useDispatch, useSelector } from 'react-redux';
 
-// const getVisibleContacts = (items, filter) => {
-//   if (!filter) {
-//     return items;
-//   }
-//   const normalizedFilter = filter.toLocaleLowerCase();
+// const ContactsList = () => {
+//   const dispatch = useDispatch();
+//   const contacts = useSelector(selectors.getVisibleContacts);
 
-//   return items.filter(contact =>
-//     contact.name.toLocaleLowerCase().includes(normalizedFilter),
+//   useEffect(() => dispatch(operations.fetchContacts()), []);
+//   return (
+//     <ul className={styles.contacts__list}>
+//       {contacts.map(({ id }) => (
+//         <ContactsItem key={id} value={id} />
+//       ))}
+//     </ul>
 //   );
 // };
+
+// ContactsList.propTypes = {
+//   contacts: PropTypes.array.isRequired,
+// };
+
+
+// export default ContactsList;
+
+
+
+
+
+
+
+// class ContactsList extends Component {
+//   componentDidMount() {
+//     this.props.fetchContacts();
+//   }
+
+//   render() {
+//     return (
+//       <ul className={styles.contacts__list}>
+//        {this.props.contacts.map(({ id }) => (
+//          <ContactsItem key={id} value={id} />
+//        ))}
+//      </ul>
+//     )
+//   }
+// }
