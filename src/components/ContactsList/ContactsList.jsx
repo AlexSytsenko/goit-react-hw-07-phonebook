@@ -27,6 +27,7 @@ class ContactsList extends Component {
 
 ContactsList.propTypes = {
   contacts: PropTypes.array.isRequired,
+  fetchContacts: PropTypes.func.isRequired,
 };
 
 
@@ -43,7 +44,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(ContactsList);
 
 
 
-//Hooks
+//Hook
 
 // import { useDispatch, useSelector } from 'react-redux';
 

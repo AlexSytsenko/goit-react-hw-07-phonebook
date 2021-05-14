@@ -31,22 +31,3 @@ export default {
 
 
 
-
-
-
-
-// export const getVisibleContacts = state => {
-//   const filter = getFilter(state);
-//   const contacts = getAllContacts(state);
-
-//   if (!filter) {
-//     return contacts;
-//   }
-//   const normalizedFilter = filter.toLocaleLowerCase();
-
-//   return contacts.filter(contact =>
-//     contact.name.toLocaleLowerCase().includes(normalizedFilter),
-//   );
-
-// };
-
