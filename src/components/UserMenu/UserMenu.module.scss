@@ -1,3 +1,5 @@
+@import 'styles/shared';
+
 
 .container {
   display: flex;
@@ -12,4 +14,13 @@
 .name {
   font-weight: 700;
   margin-right: 15px;
+}
+
+.button {
+  @extend %button;
+  padding: 5px 10px;
+
+  &:hover {
+    background-color: $form-button-accent;
+  }
 }
