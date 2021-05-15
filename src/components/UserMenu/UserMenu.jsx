@@ -5,8 +5,6 @@ import authOperations from '../../redux/auth/auth-operations';
 import PropTypes from 'prop-types';
 
 import defaultAvatar from '../../img/avatar.png';
-
-
 import styles from './UserMenu.module.scss';
 
 
