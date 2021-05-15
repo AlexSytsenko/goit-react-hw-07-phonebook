@@ -2,6 +2,8 @@ import styles from './ContactsView.module.scss';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import Form from '../../components/Form';
 import FilterContacts from '../../components/FilterContacts';
 import ContactsList from '../../components/ContactsList';
@@ -17,6 +19,11 @@ const ContactsView = ({ isLoading }) => (
     <ContactsList />
   </>
 );
+
+ContactsView.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+};
+
 
 const mapStateToProps = state => ({
   isLoading: selectors.getLoading(state),

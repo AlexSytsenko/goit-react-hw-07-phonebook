@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import authOperations from '../../redux/auth/auth-operations';
+import PropTypes from 'prop-types';
 
+import authOperations from '../../redux/auth/auth-operations';
 import styles from './RegisterView.module.scss';
 
 class RegisterView extends Component {
@@ -77,6 +78,9 @@ class RegisterView extends Component {
   }
 }
 
+RegisterView.propTypes = {
+  onRegister: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = {
   onRegister: authOperations.register,

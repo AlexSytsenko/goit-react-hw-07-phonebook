@@ -6,6 +6,7 @@ import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from 'prop-types';
 
 import './styles/container.scss';
 import AppBar from './components/AppBar';
@@ -73,6 +74,11 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  onGetCurrentUser: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+};
 
 const mapStateToProps = state => ({
   isLoading: selectors.getIsLoading(state),

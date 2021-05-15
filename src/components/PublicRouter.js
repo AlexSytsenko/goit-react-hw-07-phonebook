@@ -27,10 +27,15 @@ const PublicRoute = ({
   />
 );
 
+PublicRoute.defaultProps = {
+  redirectTo: null,
+  routeProps: null,
+};
+
 PublicRoute.propTypes = {
   component: PropTypes.elementType.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
-  redirectTo: PropTypes.string.isRequired,
+  redirectTo: PropTypes.string,
   routeProps: PropTypes.any,
 };
 
