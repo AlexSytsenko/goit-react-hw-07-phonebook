@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import Form from '../../components/Form';
 import FilterContacts from '../../components/FilterContacts';
 import ContactsList from '../../components/ContactsList';
-import selectors from '../../redux/contacts/selectors'
+import selectors from '../../redux/contacts/contacts-selectors';
 
 const ContactsView = ({ isLoading }) => (
   <>

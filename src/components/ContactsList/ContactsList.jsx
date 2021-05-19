@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ContactsItem from '../ContactItem';
-import * as operations from '../../redux/contacts/operations';
-import * as selectors from '../../redux/contacts/selectors';
+import * as operations from '../../redux/contacts/contacts-operations';
+import * as selectors from '../../redux/contacts/contacts-selectors';
 import styles from './ContactsList.module.scss';
 
 class ContactsList extends Component {

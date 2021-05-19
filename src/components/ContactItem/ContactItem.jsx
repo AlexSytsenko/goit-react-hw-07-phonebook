@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
-import * as selectors from '../../redux/contacts/selectors';
-import * as operations from '../../redux/contacts/operations';
+import * as selectors from '../../redux/contacts/contacts-selectors';
+import * as operations from '../../redux/contacts/contacts-operations';
 import styles from './ContactItem.module.scss';
 
 const ContactsItem = ({ contacts, value, onDeleteContact }) => {

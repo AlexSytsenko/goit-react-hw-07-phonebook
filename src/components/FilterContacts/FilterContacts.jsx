@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import * as actions from '../../redux/contacts/actions';
-import * as selectors from '../../redux/contacts/selectors';
+import * as actions from '../../redux/contacts/contacts-actions';
+import * as selectors from '../../redux/contacts/contacts-selectors';
 import styles from './FilterContacts.module.scss';
 
 const FilterContacts = ({ value, onChange }) => (

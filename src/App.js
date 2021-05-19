@@ -1,6 +1,6 @@
 import { Switch } from 'react-router-dom';
 import { Component, Suspense, lazy } from 'react';
-import routes from './routes';
+import routes from './helpers/routes';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';

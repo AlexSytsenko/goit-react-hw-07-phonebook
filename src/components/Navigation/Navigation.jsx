@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import routes from '../../routes'
+import routes from '../../helpers/routes'
 import styles from './Navigation.module.scss';
 import authSelectors from '../../redux/auth/auth-selectors';
 

@@ -11,7 +11,7 @@ import {
   deleteContactSuccess,
   deleteContactError,
   changeFilter,
-} from './actions';
+} from './contacts-actions';
 
 const initialState = {
   items: [],

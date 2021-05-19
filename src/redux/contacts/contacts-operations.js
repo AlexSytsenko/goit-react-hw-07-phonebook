@@ -10,7 +10,7 @@ import {
   fetchContactsRequest,
   fetchContactsSuccess,
   fetchContactsError,
-} from './actions';
+} from './contacts-actions';
 
 export const fetchContacts = () => async dispatch => {
   dispatch(fetchContactsRequest());

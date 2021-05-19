@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { addContact } from '../../redux/contacts/operations';
-import selectors from '../../redux/contacts/selectors';
+import { addContact } from '../../redux/contacts/contacts-operations';
+import selectors from '../../redux/contacts/contacts-selectors';
 import styles from './Form.module.scss';
 
 class Form extends Component {
